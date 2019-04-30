@@ -1,0 +1,32 @@
+{
+  "name": "cnlint",
+  "version": "1.0.0",
+  "description": "Lint tool for markdown with Simplified Chinese and English.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "cnlint": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeasonstudio/cnlint.git"
+  },
+  "keywords": [
+    "lint",
+    "Markdown",
+    "Chinese",
+    "Rules"
+  ],
+  "author": "Jeason",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeasonstudio/cnlint/issues"
+  },
+  "homepage": "https://github.com/jeasonstudio/cnlint",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "markdownlint": "^0.13.0"
+  }
+}
