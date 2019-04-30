@@ -3,10 +3,12 @@ const chalk = require('chalk');
 const config = require('./config');
 // const anyBlockquote = require('./lib/any-blockquote');
 const fullWidthPunctuation = require('./lib/full-width-punctuation');
+const periodOutsideBrackets = require('./lib/period-outside-brackets');
+const cnEnSpaces = require('./lib/cn-en-spaces');
 
 const options = {
   files: ['./test/cn-en.md'],
-  customRules: [fullWidthPunctuation],
+  customRules: [fullWidthPunctuation, periodOutsideBrackets, cnEnSpaces],
   config,
 };
 
