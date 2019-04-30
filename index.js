@@ -7,14 +7,15 @@ const periodOutsideBrackets = require('./lib/period-outside-brackets');
 const cnEnSpaces = require('./lib/cn-en-spaces');
 
 const options = {
-  files: ['./test/cn-en.md'],
+  // files: ['./test/cn-en.md'],
   customRules: [fullWidthPunctuation, periodOutsideBrackets, cnEnSpaces],
   config,
 };
 
 const result = markdownlint.sync(options);
 
-function outputFormatter(output) {
+module.exports = (...files) => markdownlint.sync({ ...options, files });
+module.exports.outputFormatter = output => {
   const filenames = Object.keys(output);
   const [boldError, shinError, info] = [chalk.bold.red, chalk.red, chalk.gray];
   filenames.forEach(filename => {
@@ -44,6 +45,6 @@ function outputFormatter(output) {
       );
     });
   });
-}
+};
 
-outputFormatter(result);
+// outputFormatter(result);
