@@ -20,3 +20,8 @@ But this line is just English, no error.
 我爱JavaScript 可是a 只有1次。
 而且我也爱GoLang。
 2019年1月1日
+
+弯引号需要使用『』和「」代替。
+错误：
+“cnlint 工具真好用。” —— 鲁迅。
+这是空格吗 『123』 但是这里不需要空格。

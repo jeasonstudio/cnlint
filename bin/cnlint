@@ -13,15 +13,27 @@ const unique = list =>
   list.filter((item, index, list) => list.indexOf(item) === index);
 
 args
-  .option('port', 'The port on which the app will be running', 3000)
-  .option('debug', 'Show debug log', false)
-  .command('serve', 'Serve your static site', ['s']);
+  .option('debug', 'Show debug log', 'false', isDebug => isDebug === 'true')
+  .option(
+    'rule',
+    'Use local `**.js` file as new rule.',
+    undefined,
+    listStr =>
+      typeof listStr === 'string' && listStr.length > 0 && listStr.split(',')
+  )
+  .example('cnlint ./**/*.md', 'Lint all markdown files pwd.')
+  .example('cnlint ./demo1.md ./demo2.md', 'Lint multiple markdown files.')
+  .example(
+    'cnlint --debug=true ./example.md',
+    'Show debug logs when lint files.'
+  );
 
 const flags = args.parse(process.argv);
 
-if (flags.debug) {
-  console.log(`Debug: flags ${JSON.stringify(flags)}`);
-}
+const debug = (...logs) =>
+  flags.debug ? console.debug('Debug:', ...logs) : null;
+
+debug(`flags ${JSON.stringify(flags)}`);
 
 const list = [];
 const files = args.sub;
@@ -32,8 +44,18 @@ if (!files.length) {
 files.forEach(filepath => list.push(...glob.sync(filepath)));
 const lintFiles = unique(list);
 
-if (flags.debug) {
-  console.log(`Debug: lint files '${lintFiles.join(', ')}'`);
-}
+debug(`lint files '${lintFiles.join(', ')}'`);
 
-// outputFormatter(lint('./test/**'));
+const localRules = (flags.rule || []).map(rulePath => {
+  const fullPath = path.join(process.env.PWD, rulePath);
+  if (fs.existsSync(fullPath)) {
+    return require(fullPath);
+  }
+});
+
+try {
+  outputFormatter(lint({ files: lintFiles, rules: localRules }));
+} catch (error) {
+  console.log(chalk.red(error.message));
+  debug(error);
+}

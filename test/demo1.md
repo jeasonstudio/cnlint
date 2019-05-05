@@ -127,6 +127,3 @@
 > - [https://www.w3.org/html/ig/zh/wiki/Css4-text](https://www.w3.org/html/ig/zh/wiki/Css4-text)
 > - [https://www.toptal.com/designers/htmlarrows/](https://www.toptal.com/designers/htmlarrows/)
 > - [https://www.key-shortcut.com/en/writing-systems/文字-chinese-cjk/cjk-characters-1/](https://www.key-shortcut.com/en/writing-systems/%E6%96%87%E5%AD%97-chinese-cjk/cjk-characters-1/)
-
-* asdfa
-* aaa

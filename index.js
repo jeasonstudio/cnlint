@@ -5,16 +5,30 @@ const config = require('./config');
 const fullWidthPunctuation = require('./lib/full-width-punctuation');
 const periodOutsideBrackets = require('./lib/period-outside-brackets');
 const cnEnSpaces = require('./lib/cn-en-spaces');
+const useCnQuote = require('./lib/use-cn-quote');
+
+const buildinRules = [
+  fullWidthPunctuation,
+  periodOutsideBrackets,
+  cnEnSpaces,
+  useCnQuote,
+];
 
 const options = {
   // files: ['./test/cn-en.md'],
-  customRules: [fullWidthPunctuation, periodOutsideBrackets, cnEnSpaces],
+  customRules: [],
   config,
 };
 
 const result = markdownlint.sync(options);
 
-module.exports = (...files) => markdownlint.sync({ ...options, files });
+module.exports = ({ files, rules }) =>
+  markdownlint.sync({
+    ...options,
+    files,
+    customRules: [...buildinRules, ...rules],
+  });
+
 module.exports.outputFormatter = output => {
   const filenames = Object.keys(output);
   const [boldError, shinError, info] = [chalk.bold.red, chalk.red, chalk.gray];
