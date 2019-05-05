@@ -1,17 +1,12 @@
 const markdownlint = require('markdownlint');
 const chalk = require('chalk');
 const config = require('./config');
-// const anyBlockquote = require('./lib/any-blockquote');
-const fullWidthPunctuation = require('./lib/full-width-punctuation');
-const periodOutsideBrackets = require('./lib/period-outside-brackets');
-const cnEnSpaces = require('./lib/cn-en-spaces');
-const useCnQuote = require('./lib/use-cn-quote');
 
 const buildinRules = [
-  fullWidthPunctuation,
-  periodOutsideBrackets,
-  cnEnSpaces,
-  useCnQuote,
+  require('./lib/full-width-punctuation'),
+  require('./lib/period-outside-brackets'),
+  require('./lib/cn-en-spaces'),
+  require('./lib/use-cn-quote'),
 ];
 
 const options = {
@@ -60,5 +55,3 @@ module.exports.outputFormatter = output => {
     });
   });
 };
-
-// outputFormatter(result);

@@ -26,6 +26,10 @@ args
   .example(
     'cnlint --debug=true ./example.md',
     'Show debug logs when lint files.'
+  )
+  .example(
+    'cnlint --rule=./my-rule.js',
+    'Use local rule to lint. See: https://github.com/DavidAnson/markdownlint/blob/master/doc/CustomRules.md'
   );
 
 const flags = args.parse(process.argv);
@@ -39,6 +43,7 @@ const list = [];
 const files = args.sub;
 if (!files.length) {
   console.log(chalk.red('Error: At least one markdown file is needed.'));
+  args.showHelp();
 }
 
 files.forEach(filepath => list.push(...glob.sync(filepath)));
