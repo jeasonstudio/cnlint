@@ -1,6 +1,6 @@
 {
   "name": "cnlint",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lint tool for markdown with Simplified Chinese and English.",
   "main": "index.js",
   "scripts": {
