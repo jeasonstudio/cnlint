@@ -43,7 +43,11 @@ $ cnlint -h
 ```
 
 ![demo](images/demo.jpg)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjeasonstudio%2Fcnlint.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjeasonstudio%2Fcnlint?ref=badge_shield)
 
 ## License
 
 [MIT](LICENSE)
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjeasonstudio%2Fcnlint.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjeasonstudio%2Fcnlint?ref=badge_large)
